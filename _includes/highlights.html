@@ -1,0 +1,31 @@
+{% comment %}
+Use this section to highlight key elements of your site. Some sites will only have two while others may have six to
+eight.
+{% endcomment %}
+
+
+<section class="usa-graphic-list">
+  <div class="grid-container padding-bottom-4">
+    <div class="flex-align-center">
+      <div class="text-center text-primary">
+        <h2>News & Highlights</h2>
+      </div>
+    </div>
+    <div class="usa-graphic-list__row grid-row grid-gap">
+      {% for post in site.posts limit: 4 %}
+      <div class="usa-media-block tablet:grid-col-6">
+        <img class="usa-media-block__img circle-card" alt="{{ post.img-alt }}"  src="{{ site.baseurl }}/assets/images/blog/{{ post.image }}">
+        <div class="usa-media-block__body">  
+            <h3 class="usa-graphic-list__heading text-base"><a class="eoc-link text-no-underline border-0" href="{{site.baseurl}}{{post.permalink}}">{{post.title}}</a></h3>
+          <p class="text-italic margin-0 text-base">By <span class="text-bold">{{ post.author }}</span> · {{ post.date |
+            date: '%B %d, %Y' }}</p>
+          <p>{{post.excerpt}} <a href="{{site.baseurl}}{{post.permalink}}" aria-label="{{post.aria}}">Continue Reading</a></p>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  
+  <div class="text-center"><a class="usa-button btn-primary border-0 padding-x-6"
+    href="{{site.baseurl}}/news/">See All</a>
+</div>
+</section>
